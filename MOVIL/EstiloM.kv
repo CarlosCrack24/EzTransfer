@@ -1,0 +1,119 @@
+#:kivy 1.0.9
+#:import utils kivy.utils
+
+<MiVentana>:
+    canvas.before:
+        Color:
+            rgb: utils.get_color_from_hex("#dcdcdc")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+    
+        Label:
+            text: "EzTransfer"
+            font_size: root.height * 0.07
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "top": 0.975}
+            color: 0, 0, 0, 1
+            font_name: 'Aesthetic Moment  Italic Personal Used.ttf'
+        # Botón Izquierdo
+        FloatLayout:
+            pos_hint: {"x": 0, "y": 0}
+            orientation: 'vertical'
+            FloatLayout:
+                id: left_circle
+                size_hint: None, None
+                pos_hint: {"center_x": 0.50, "center_y": 0.675}
+                canvas:
+                    Color:
+                        rgba: 0, 0, 0, 0.35  
+                    Ellipse:
+                        size: self.size
+                        pos: self.x + 5, self.y - 8  
+                    Color:
+                        rgb: utils.get_color_from_hex("#343434")
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+                    Color:
+                        rgb: utils.get_color_from_hex("#00ffd1")
+                    Ellipse:
+                        size: self.width * 0.95, self.height * 0.95
+                        pos: self.x + self.width * 0.025, self.y + self.height * 0.025
+                Image:
+                    source: 'recibir1.png'
+                    size_hint: 0.7, 0.7
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    allow_stretch: True
+                    keep_ratio: True
+                Button:
+                    size_hint: 0.95, 0.95
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_normal: ''
+                    background_color: 0, 0, 0, 0
+                    on_press: root.encoger_boton("left_circle")
+                    on_release: root.restaurar_boton("left_circle", root.funcion_boton_izquierdo)
+            Label:
+                text: "Recibir"
+                font_size: root.height * 0.04
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {"center_x": 0.50, "y": 0.47}
+                color: 0, 0, 0, 1
+                font_name: 'Goride Sans Inked.otf'
+            TextInput:
+                id: log
+                size_hint_y: 0.2
+                readonly: True
+                background_color: 0,0,0,1
+                foreground_color: 1,1,1,1
+                multiline: True
+        # Botón Derecho
+        FloatLayout:
+            pos_hint: {"x": 0, "y": 0}
+            FloatLayout:
+                id: right_circle
+                size_hint: None, None
+                pos_hint: {"center_x": 0.5, "center_y": 0.26}
+                canvas:
+                    Color:
+                        rgba: 0, 0, 0, 0.35  
+                    Ellipse:
+                        size: self.size
+                        pos: self.x + 5, self.y - 8  
+                    Color:
+                        rgb: utils.get_color_from_hex("#343434")
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+                    Color:
+                        rgb: utils.get_color_from_hex("#00ff01")
+                    Ellipse:
+                        size: self.width * 0.95, self.height * 0.95
+                        pos: self.x + self.width * 0.025, self.y + self.height * 0.025
+                Image:
+                    source: 'enviar1.png'
+                    size_hint: 0.8, 0.8
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    allow_stretch: True
+                    keep_ratio: True
+
+                Button:
+                    size_hint: 0.95, 0.95
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    background_normal: ''
+                    background_color: 0, 0, 0, 0
+                    on_press: root.encoger_boton("right_circle")
+                    on_release: root.restaurar_boton("right_circle", root.funcion_boton_derecho)
+
+            Label:
+                text: "Enviar"
+                font_size: root.height * 0.04
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {"center_x": 0.5, "y": 0.05}
+                color: 0, 0, 0, 1
+                font_name: 'Goride Sans Inked.otf'
